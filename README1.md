@@ -1,293 +1,263 @@
-# simple_repo
-let student = {
-  name: "Kishore",
-  grade: 75,
-  subjects: ["Math", "Science", "English"],
+#1
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~
+$ mkdir MITdemo
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~
+$ cd MITdemo
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo
+$ ls
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo
+$ touch index.html index2.html index3.html
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo
+$ vim index.html
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo
+$ cat index.html
+Hello! This is the first program from DevOps Training.
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo
+$ ls -l
+total 1
+-rw-r--r-- 1 Likith Kumar 197609 55 Apr 17 19:13 index.html
+-rw-r--r-- 1 Likith Kumar 197609 0 Apr 17 19:12 index2.html
+-rw-r--r-- 1 Likith Kumar 197609 0 Apr 17 19:12 index3.html
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo
+$ git init
+Initialized empty Git repository in C:/Users/Likith Kumar/MITdemo/.git/
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git add .
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git
+touches it
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git commit -m "Initial Commit"
+[master (root-commit) 0b3c527] Initial Commit
+3 files changed, 1 insertion(+)
+create mode 100644 index.html
 
-  displayInfo: function () {
-    console.log("Name:", this.name);
-    console.log("Grade:", this.grade);
-    console.log("Subjects:", this.subjects.join(", "));
-  }
-};
+create mode 100644 index2.html
+create mode 100644 index3.html
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git remote add origin https://github.com/LikithKumar0112/Mod1P1-Demo.git
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git branch -M main
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (main)
+$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 311 bytes | 155.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/LikithKumar0112/Mod1P1-Demo.git
+* [new branch] main -> main
+branch 'main' set up to track 'origin/main'.
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (main)
+$
 
-// Call function
-student.displayInfo();
+#2
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~
+$ git clone https://github.com/LikithKumar0112/Mod1P1-Demo.git
+Cloning into 'Mod1P1-Demo'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 4 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (4/4), done.
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~
+$ git branch -m master
+fatal: not a git repository (or any of the parent directories): .git
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~
+$ cd MITdemo
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (main)
+$ git branch -m master
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git branch ls
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git branch
+ls
+* master
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git branch -a
+ls
+* master
+remotes/origin/main
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$ git rebase master
+Current branch master is up to date.
+Likith Kumar@DESKTOP-8N6978G MINGW64 ~/MITdemo (master)
+$
 
-// Add dynamic property
-student.isPassed = student.grade >= 50;
 
-// Loop through object
-for (let key in student) {
-  console.log(key + ":", student[key]);
+#3
+pipeline {
+agent any
+stages {
+stage('Clone Repository') {
+steps {
+git branch: 'main',
+url: 'https://github.com/your-username/your-repo.git'
+}
+}
+stage('Status') {
+steps {
+echo "Sucessfully fetched the repo"
+}
 }
 
-
-#lab2
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Event Listener Example</title>
-    <style>
-        img {
-            width: 200px;
-            border: 5px solid black;
-        }
-    </style>
-</head>
-
-<body>
- <!-- Button -->
-    <button id="btn">Click Me</button>
-    <br><br>
-    <!-- Image -->
-    <img id="myImage" src="https://via.placeholder.com/200" alt="Sample Image">
-    <script>
-        // Button click event
-        document.getElementById("btn").addEventListener("click", function() {
-            console.log("Button clicked!");
-        }
-);
-
-        // Image mouseover event
-        document.getElementById("myImage").addEventListener("mouseover", function() {
-            this.style.borderColor = "red";
-        });
- // Keyboard event
-        document.addEventListener("keydown", function(event) {
-            console.log("Key pressed: " + event.key);
-        });
-    </script>
-
-</body>
-</html>
-
-
-#lab3 
-
-import React from "react";
-function IssueList() {
-  // Static data
-  const issues = [
-    {
-      id: 1,
-      title: "Login Bug",
-      description: "User cannot login with valid credentials",
-      status: "Open"
-    },
-    {
-      id: 2,
-      title: "Page Crash",
-      description: "Dashboard crashes on load",
-      status: "Closed"
-    },
-    {
-      id: 3,
-      title: "UI Issue",
-      description: "Button alignment is incorrect",
-      status: "Open"
-    }
-  ];
-
-  return (
-    <div>
-      <h1>Issue Tracker</h1>
-      {issues.map((issue) => (
-        <div key={issue.id} style={{ border: "1px solid black", margin: "10px", padding: "10px" }}>
-          <h3>{issue.title}</h3>
-          <p>{issue.description}</p>
-          <p><strong>Status:</strong> {issue.status}</p>
-        </div>
-      ))}
-    </div>
-  );
+#4
+pipeline {
+agent any
+tools {
+maven 'Maven-3'
 }
-export default IssueList;
+stages {
+stage('Checkout') {
+steps {
+git branch: 'main', url: 'https://github.com/LikithKumar0112/Jenkins-demo.git'
+}
+}
+stage('Build') {
+steps {
+sh 'mvn clean compile'
+}
+}
+stage('Test') {
+steps {
+sh 'mvn test'
+}
+}
+stage('Package') {
+steps {
+sh 'mvn package'
+}
+}
+}
+}
+#5
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+print("Starting Test...")
+driver = webdriver.Chrome()
+print("Opening Google...")
+driver.get("https://www.google.com")
+print("Locating search box...")
+search = driver.find_element(By.NAME, "q")
+print(" Typing 'MIT college'...")
+search.send_keys("MIT college")
+search.send_keys(Keys.RETURN)
+print("Search executed successfully!")
+input("Press ENTER to close the browser...")
+print("Closing browser...")
+driver.quit()
+print("Test Completed!")
 
-
-$lab5
-views.py[file]
-
-from django.http import HttpResponse
-import datetime
-
-def current_datetime(request):
-
-    now = datetime.datetime.now()
-
-    html = "<h1>Current Date and Time:</h1> %s" % now
-
-    return HttpResponse(html)
-
-
-urls.py [file]
-
-from django.contrib import admin
-from django.urls import path
-from . import views
-
-urlpatterns = [
-
-    path('admin/', admin.site.urls),
-
-    path('time/', views.current_datetime),
-
+Output:
+Run: python3 test_google2.py
+🚀 Starting Test...
+🌐 Opening Google...
+🔍 Locating search box...
+⌨️ Typing 'MIT college'...
+✅ Search executed successfully!
+⏸️ Press ENTER to close the browser...
+🛑 Closing browser...
+🎉 Test Completed!
+#6
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+print("Continuous XPath Search Demo Starting...")
+driver = webdriver.Chrome()
+driver.get("https://www.google.com")
+time.sleep(3)
+search_terms = [
+"XPath examples",
+"Selenium XPath tutorial",
+"XPath contains example"
 ]
+for term in search_terms:
+print(f" Searching for: {term}")
+# Always re-find element fresh (important)
+search = driver.find_element(By.NAME, "q")
+# Clear properly
+search.clear()
+time.sleep(1)
+# Type slowly (avoid bot detection)
+for char in term:
+search.send_keys(char)
+time.sleep(0.1)
+time.sleep(1)
+search.send_keys(Keys.RETURN)
+print("Search executed")
+time.sleep(5)
+# Go back to Google homepage (IMPORTANT FIX)
+driver.get("https://www.google.com")
 
+time.sleep(3)
 
-ii)date and time four hours ahead and four hours before as an offset of current date and time in server.
+input("Press ENTER to close browser...")
+driver.quit()
 
+Output:
+run python3 test_xpath.py
+Continuous XPath Search Demo Starting...
+Searching for: XPath examples
+Search executed
+Searching for: Selenium XPath tutorial
+Search executed
+Searching for: XPath contains example
+Search executed
+Press ENTER to close browser...
 
-views.py
+#7
+pipeline {
+agent any
+tools {
+maven 'M3'
+}
+stages {
+stage('Checkout') {
+steps {
+git branch: 'master',
+url: 'https://github.com/AravindRohit/simple-java-project'
+}
+}
+stage('Build') {
+steps {
+sh 'mvn clean package -DskipTests'
+}
+}
+stage('Test') {
+steps {
+sh 'mvn test'
+}
+}
+}
+}
+#8
+# application file
+from flask import Flask
+app = Flask(__name__)
 
-from django.http import HttpResponse
-import datetime
+@ flask main.py file
+from app import app
+@app.route('/')
+def home():
+return 'Hello from Docker! Flask app is running inside a container.'
+@app.route('/health')
+def health():
+return 'OK', 200
+if __name__ == '__main__':
+app.run(host='0.0.0.0', port=5000)
 
-def offset_time(request):
+# dockerfile
+FROM python:3.9-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+CMD ["python", "main.py"]
 
-    now = datetime.datetime.now()
-
-    ahead = now + datetime.timedelta(hours=4)
-
-    before = now - datetime.timedelta(hours=4)
-
-    html = """
-    <h1>Date and Time Calculations</h1>
-
-    <p><b>Current Date and Time:</b> {}</p>
-
-    <p><b>Four Hours Ahead:</b> {}</p>
-
-    <p><b>Four Hours Before:</b> {}</p>
-    """.format(now, ahead, before)
-
-    return HttpResponse(html)
-
-
-
-
-
-
-
-
-
-
-
-urls.py
-
-from django.contrib import admin
-from django.urls import path
-from . import views
-
-urlpatterns = [
-
-    path('admin/', admin.site.urls),
-
-    path('offset/', views.offset_time),
-
-]
-
- 
-Direct Method
-
-1. Open VS Code
-2. Open Terminal
-3. pip install django
-4. django-admin startproject myproject
-5. cd myproject
-6. python manage.py runserver
-7. python manage.py startapp myapp
-
-
-
-you will see
-(base) c:\users\user>
-
-#lab6
-1. Create Django Project
-django-admin startproject myproject
-2. Move into Project Folder
-cd myproject
-3. Create App
-python manage.py startapp myapp
-4. settings.py
-Add 'myapp' inside INSTALLED_APPS
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'myapp',
-]
-5. views.py
-from django.shortcuts import render
-
-def home(request):
-
-    fruits = [
-        'Apple',
-        'Banana',
-        'Mango',
-        'Orange',
-        'Grapes'
-    ]
-
-    students = [
-        'Rahul',
-        'Sneha',
-        'Amit',
-        'Priya',
-        'Kiran'
-    ]
-
-    return render(request, 'home.html', {
-        'fruits': fruits,
-        'students': students
-    })
-6. myapp/urls.py
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    path('', views.home, name='home'),
-]
-7. myproject/urls.py
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('myapp.urls')),
-]
-8. home.html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Fruits and Students List</title>
-</head>
-
-<body>
-
-    <h1>Unordered List of Fruits</h1>
-
-    <ul>
-        {% for fruit in fruits %}
-            <li>{{ fruit }}</li>
-        {% endfor %}
-    </ul>
-
-    <h1>Ordered List of Selected Students</h1>
-
-    <ol>
-        {% for student in students %}
-            <li>{{ student }}</li>
-        {% endfor %}
-    </ol>
-
-</body>
-</html>
-9. Run Server
-python manage.py runserver
-
+# requirements file
+flask==2.3.2
+#9
+#10
